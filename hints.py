@@ -2,7 +2,7 @@
 class Hints:
 
     def __init__(self, max_hints=3):
-        
+
         # dictonary
         self.hints_dict = {
             1: "hint 1",
@@ -12,7 +12,7 @@ class Hints:
             5: "hint 5",
             6: "hint 6",
             7: "hint 7",
-            8: "hint 8",  
+            8: "hint 8",
         }
 
         self.used_hints_dict = {
@@ -26,6 +26,7 @@ class Hints:
 
         self.max_hints = max_hints
         self.used_hints_number = 0
+
 
     def get_hint(self, number):
 
@@ -43,4 +44,3 @@ class Hints:
         self.used_hints_list.append(number)
 
         return self.hints_dict.get(number)
-        
