@@ -1,29 +1,46 @@
+# create class
 class Hints:
 
-#dictonary
-hints_dict = {
-    1: "hint 1",
-    2: "hint 2",
-    3: "hint 3",
-    4: "hint 4",
-    5: "hint 5",
-    6: "hint 6",
-    7: "hint 7",
-    8: "hint 8",
-}
-#used hints list
-used_hints = []
+    def __init__(self, max_hints=3):
+        
+        # dictonary
+        self.hints_dict = {
+            1: "hint 1",
+            2: "hint 2",
+            3: "hint 3",
+            4: "hint 4",
+            5: "hint 5",
+            6: "hint 6",
+            7: "hint 7",
+            8: "hint 8",  
+        }
 
-#Question
-print("Do you need a hint?")
+        self.used_hints_dict = {
+            1: "1st",
+            2: "2nd",
+            3: "last",
+        }
 
-# print(hints_dict.get(9, "There's no 9!"))
+        # used hints list
+        self.used_hints_list = []
 
-input("Y/N\n")
-def get_hint(number):
-    if len(used_hints) >= 3:
-        print("Too Bad!")
-        return
-    hint = hints_dict.get(number)
-    used_hints.append(number)
-    return hint
+        self.max_hints = max_hints
+        self.used_hints_number = 0
+
+    def get_hint(self, number):
+
+        if self.used_hints_number >= self.max_hints:
+            print("Too Bad! You've used all 3 of your hints")
+            return
+
+        user_input = input(f"""
+            Are you sure you would like to use your {self.used_hints_dict} of {self.max_hints}? [Y/N]
+        """)
+
+        if user_input.upper() != "Y":
+            return
+
+        self.used_hints_list.append(number)
+
+        return self.hints_dict.get(number)
+        
